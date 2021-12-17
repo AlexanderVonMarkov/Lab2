@@ -1,11 +1,13 @@
 import os, requests, uuid, json
 
 # Не забудьте заменить своим ключом значение subscription_key!
-subscription_key = '02a73e127d964eca84ec4bfb97784fb3'
+subscription_key = 'e31200a5750249228486dc412e7e6dd3'
 location = 'northeurope'
 # Не забудьте заменить своим местоположением значение location!
 # Наш маршрут Flask поставит два аргумента: text_input и language_output.
 # При нажатии кнопки перевода текста в приложении Flask запрос Ajax возьмет эти значения из нашего веб-приложения и будет использовать их в запросе.
+
+
 def get_translation(text_input, language_output):
     base_url = 'https://api.cognitive.microsofttranslator.com'
     path = '/translate?api-version=3.0'
@@ -21,7 +23,7 @@ def get_translation(text_input, language_output):
 
     # В теле можно передать несколько объектов.
     body = [{
-        'text' : text_input
+        'text': text_input
     }]
     response = requests.post(constructed_url, headers=headers, json=body)
     return response.json()
